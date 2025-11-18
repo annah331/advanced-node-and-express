@@ -18,6 +18,11 @@ const cookieParser = require('cookie-parser');
 const URI = process.env.MONGO_URI;
 const store = new MongoStore({ url: URI });
 
+mongoose.connect(process.env.MONGO_URI, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+});
+
 fccTesting(app); //For FCC testing purposes
 app.use('/public', express.static(process.cwd() + '/public'));
 app.use(express.json());
